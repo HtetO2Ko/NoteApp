@@ -1,22 +1,23 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:note_app/data/auth/models/auth.dart';
 
 class AuthDataSource {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  Future<User?> login(String email, String password) async {
+  Future<User?> login(AuthModel authModel) async {
     UserCredential userCredential =
         await _firebaseAuth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
+      email: authModel.email,
+      password: authModel.password,
     );
     return userCredential.user;
   }
 
-  Future<UserCredential?> registerUser(String email, String password) async {
+  Future<UserCredential?> registerUser(AuthModel authModel) async {
     UserCredential userCredential =
         await _firebaseAuth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
+      email: authModel.email,
+      password: authModel.password,
     );
     return userCredential;
   }

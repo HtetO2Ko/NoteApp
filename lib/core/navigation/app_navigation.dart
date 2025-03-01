@@ -21,6 +21,7 @@ class AppNavigator {
         builder: (context) => widget,
       ),
     );
+
     if (returnValue != null) {
       return returnValue;
     }

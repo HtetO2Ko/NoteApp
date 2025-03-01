@@ -20,4 +20,18 @@ class Validator {
     }
     return null;
   }
+
+  static String? validateTitle(String? title) {
+    if (title == null || title.isEmpty) {
+      return 'Title cannot be blank';
+    }
+    return null;
+  }
+
+  static String? validateDesc(String? description) {
+    if (description == null || description.isEmpty) {
+      return 'Description cannot be blank';
+    }
+    return null;
+  }
 }

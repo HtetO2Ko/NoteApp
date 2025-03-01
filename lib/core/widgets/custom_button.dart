@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:note_app/core/configs/theme/app_color.dart';
 
 class CustomButton extends StatelessWidget {
   final void Function()? onTap;
@@ -21,7 +22,7 @@ class CustomButton extends StatelessWidget {
         height: 60,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: Color(0xFFFFB22C),
+          color: AppColor.buttonColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(

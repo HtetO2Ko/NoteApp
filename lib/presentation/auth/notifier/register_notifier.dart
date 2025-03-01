@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:note_app/core/navigation/app_navigation.dart';
 import 'package:note_app/core/utils/displaymessage.dart';
 import 'package:note_app/core/utils/validator.dart';
+import 'package:note_app/data/auth/models/auth.dart';
 import 'package:note_app/domain/auth/usecases/auth.dart';
 import 'package:note_app/presentation/note/note.dart';
 
@@ -44,9 +45,11 @@ class RegisterNotifier extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
+    AuthModel authModel =
+        AuthModel(email: trimmedEmail, password: trimmedPassword);
+
     try {
-      final UserCredential? user =
-          await AuthUseCase().registerUser(trimmedEmail, trimmedPassword);
+      final UserCredential? user = await AuthUseCase().registerUser(authModel);
       if (user == null) {
         DisplayMessage.showSnackBar(
           "Register failed. Please check your credentials.",
