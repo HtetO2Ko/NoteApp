@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.noteApp</string>
+	<string>com.hok.noteApp</string>
 	<key>PROJECT_ID</key>
 	<string>note-a4d35</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:472684143324:ios:b25b2edee60e14428b0a19</string>
+	<string>1:472684143324:ios:7c670d644aaf7a738b0a19</string>
 </dict>
 </plist>
