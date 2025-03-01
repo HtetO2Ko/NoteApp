@@ -6,6 +6,7 @@ import 'package:note_app/core/navigation/app_navigation.dart';
 import 'package:note_app/core/widgets/custom_appbar.dart';
 import 'package:note_app/data/note/models/note.dart';
 import 'package:note_app/presentation/note/add_note.dart';
+import 'package:note_app/presentation/note/edit_note.dart';
 import 'package:note_app/presentation/note/notifier/note_notifier.dart';
 import 'package:provider/provider.dart';
 
@@ -49,48 +50,54 @@ class NotePage extends StatelessWidget {
                     var note = notes[index];
                     String formattedDate = DateFormat("dd/MM/yyyy")
                         .format(note.createdAt.toDate());
-                    return Container(
-                      margin: EdgeInsets.only(
-                          left: 20, right: 20, top: 10, bottom: 10),
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10),
+                    return GestureDetector(
+                      onTap: () => AppNavigator.push(
+                        context,
+                        EditNote(editNote: note),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            note.title,
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: theme.primaryColor,
-                              fontWeight: FontWeight.w700,
-                            ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          Text(
-                            note.description,
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: theme.primaryColor,
-                              fontWeight: FontWeight.normal,
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            left: 20, right: 20, top: 10, bottom: 10),
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              note.title,
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: theme.primaryColor,
+                                fontWeight: FontWeight.w700,
+                              ),
+                              maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            maxLines: 3,
-                          ),
-                          Text(
-                            formattedDate,
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: theme.primaryColor,
-                              fontWeight: FontWeight.w400,
-                              overflow: TextOverflow.ellipsis,
+                            Text(
+                              note.description,
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: theme.primaryColor,
+                                fontWeight: FontWeight.normal,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              maxLines: 3,
                             ),
-                            maxLines: 3,
-                          ),
-                        ],
+                            Text(
+                              formattedDate,
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: theme.primaryColor,
+                                fontWeight: FontWeight.w400,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              maxLines: 3,
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },

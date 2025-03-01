@@ -6,11 +6,15 @@ class CustomButton extends StatelessWidget {
   final void Function()? onTap;
   final String buttonTxt;
   final bool buttonLoading;
+  final Color? color;
+  final Color? txtColor;
   const CustomButton({
     super.key,
     required this.onTap,
     required this.buttonTxt,
     required this.buttonLoading,
+    this.color,
+    this.txtColor,
   });
 
   @override
@@ -20,22 +24,21 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 60,
-        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: AppColor.buttonColor,
+          color: color ?? AppColor.buttonColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
           child: buttonLoading
               ? SpinKitRing(
-                  color: theme.primaryColor,
+                  color: txtColor ?? theme.primaryColor,
                   size: 30,
                   lineWidth: 4,
                 )
               : Text(
                   buttonTxt,
                   style: TextStyle(
-                    color: theme.primaryColor,
+                    color: txtColor ?? theme.primaryColor,
                   ),
                 ),
         ),

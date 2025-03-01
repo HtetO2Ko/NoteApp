@@ -6,6 +6,7 @@ class Note {
   final String description;
   final String userEmail;
   final Timestamp createdAt;
+  final Timestamp updatedAt;
 
   Note({
     required this.id,
@@ -13,6 +14,7 @@ class Note {
     required this.description,
     required this.userEmail,
     required this.createdAt,
+    required this.updatedAt,
   });
 
   factory Note.fromMap(Map<String, dynamic> data, String id) {
@@ -22,16 +24,17 @@ class Note {
       description: data['description'] ?? '',
       userEmail: data['userEmail'] ?? '',
       createdAt: _convertTimestamp(data['createdAt']),
+      updatedAt: _convertTimestamp(data['updatedAt']),
     );
   }
 
   static Timestamp _convertTimestamp(dynamic timestamp) {
     if (timestamp is Timestamp) {
-      return timestamp; // Already a Firestore Timestamp
+      return timestamp;
     } else if (timestamp is String) {
       DateTime dateTime = DateTime.parse(timestamp);
       return Timestamp.fromDate(dateTime);
     }
-    return Timestamp.now(); // Default if missing
+    return Timestamp.now();
   }
 }
